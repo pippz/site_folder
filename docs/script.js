@@ -58,20 +58,3 @@ document.querySelectorAll("#solarsystemdiv p").forEach(function(p) {
   p.style.opacity = "0";
   observer.observe(p);
 });
-
-const scene = new THREE.Scene(); // for the telescope render, decides position and pov
-
-const camera = new THREE.PerspectiveCamera(75, 800 / 500, 0.1, 1000);
-camera.position.z = 5;
-
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(800, 500);
-document.getElementById("telescopeViewer").appendChild(renderer.domElement);
-
-const loader = new THREE.GLTFLoader(); // for the telescope render, load the 3d render
-loader.load(
-  'https://raw.githubusercontent.com/nasa/NASA-3D-Resources/master/3D%20Models/James%20Webb%20Space%20Telescope%20(B)/James%20Webb%20Space%20Telescope%20(B).glb',
-  function(gltf) {
-    scene.add(gltf.scene);
-  }
-);
