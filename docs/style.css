@@ -9,7 +9,7 @@ body, h1, h2, h3, p {
 body {
     background-color: #070a12;
     color: #e8e8e8;
-    overflow-x: auto;
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
