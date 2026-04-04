@@ -23,7 +23,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.11);
-    border-radius: 3px;
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -106,16 +106,45 @@ header .fa-bars:hover {
     gap: 30px;
     padding: 1px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none; /* so stars don't interfere with hovering the image */
+  animation: twinkle 1.5s infinite alternate;
+  z-index: -1;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.2; }
+  100% { opacity: 1; }
 }
 
 #imageSection img {
     height: 800px;
     width: auto;
     border-radius: 8px;
+    z-index: 1;
+    cursor: pointer;
 }
 
 #imageSection p {
     width: 350px;
+}
+
+#earthInfo {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background-color: #0b0f1a;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 1;
 }
 
 #solarsystemdiv p#info {
@@ -124,6 +153,12 @@ header .fa-bars:hover {
 
 #solarsystemdiv p {
   transition: opacity 0.8s ease;
+}
+
+.statsCard {
+    background-color: #0b0f1a;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
 }
 
 #Sun {
@@ -140,7 +175,7 @@ header .fa-bars:hover {
 }
 
 #Sun img {
-    height: 600px;
+    height: 500px;
     width: auto;
     border-radius: 8px;
     box-shadow: 0 0 30px rgba(255, 165, 0, 0.6);
@@ -160,7 +195,7 @@ header .fa-bars:hover {
 }
 
 #Mercury img {
-    height: 600px;
+    height: 500px;
     width: auto;
     border-radius: 8px;
     box-shadow: 0 0 30px rgb(117, 114, 114);
@@ -180,7 +215,7 @@ header .fa-bars:hover {
 }
 
 #Venus img {
-    height: 600px;
+    height: 500px;
     width: auto;
     border-radius: 8px;
     box-shadow: 0 0 30px rgb(250, 132, 21);
@@ -200,7 +235,7 @@ header .fa-bars:hover {
 }
 
 #Earth img {
-    height: 600px;
+    height: 500px;
     width: auto;
     border-radius: 8px;
     box-shadow: 0 0 30px rgba(36, 119, 243, 0.459);
@@ -212,7 +247,6 @@ header .fa-bars:hover {
     justify-content: center;
     gap: 100px;
     padding: 1px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 #Mars p {
@@ -220,11 +254,32 @@ header .fa-bars:hover {
 }
 
 #Mars img {
-    height: 600px;
+    height: 500px;
     width: auto;
     border-radius: 8px;
     box-shadow: 0 0 30px rgba(252, 165, 34, 0.63);
 }
+
+
+#asteroidbelt {
+    position: relative;
+    height: 300px;
+}
+
+.asteroid {
+    position: absolute;
+    background: #888;
+    border-radius: 50%;
+    opacity: 1;
+    animation: drift linear infinite;
+    animation-duration: var(--duration);
+}
+
+@keyframes drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-200vw); }
+}
+
 
 #Jupiter {
     display: flex;
@@ -240,7 +295,7 @@ header .fa-bars:hover {
 }
 
 #Jupiter img {
-    height: 600px;
+    height: 500px;
     width: auto;
     border-radius: 8px;
     box-shadow: 0 0 30px rgb(255, 231, 253);
@@ -256,10 +311,16 @@ header .fa-bars:hover {
 }
 
 #Saturn p {
-    width: 550px;
+    width: 700px;
 }
 
-#Saturn img {
+#saturnimgdiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#saturnimgdiv img {
     height: 400px;
     width: auto;
     border-radius: 8px;
@@ -280,7 +341,7 @@ header .fa-bars:hover {
 }
 
 #Uranus img {
-    height: 600px;
+    height: 500px;
     width: auto;
     border-radius: 8px;
     box-shadow: 0 0 30px rgba(171, 238, 255, 0.986);
@@ -300,7 +361,7 @@ header .fa-bars:hover {
 }
 
 #Neptune img {
-    height: 600px;
+    height: 500px;
     width: auto;
     border-radius: 8px;
     box-shadow: 0 0 30px rgba(84, 115, 255, 0.986);
@@ -353,7 +414,7 @@ header .fa-bars:hover {
 }
 
 #Pluto img {
-    height: 600px;
+    height: 500px;
     width: auto;
     border-radius: 8px;
     box-shadow: 0 0 30px rgba(255, 238, 238, 0.986);
@@ -433,11 +494,17 @@ h3 {
     background: rgba(255, 255, 255, 0.6);
 }
 
+#telescopesection {
+    position: relative;
+}
+
 iframe {
     display: block;
     margin: 0 auto;
     border: none;
     border-radius: 15px;
+    box-shadow: 0 0 100px rgba(27, 34, 99, 0.3);
+    border-radius: 8px;
 }
 
 
@@ -460,6 +527,7 @@ footer {
     justify-content: left;
     align-items: center;
     padding: 0 20px;
+    z-index: 2;
 }
 
 footer:hover {
