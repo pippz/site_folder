@@ -8,6 +8,7 @@ document.getElementById("homeBtn").onclick = function() { // function for menu
   }
 }
 
+
 const h1 = document.querySelector("h1");
 
 window.addEventListener("scroll", function() { // function to make title disappear 
@@ -17,6 +18,7 @@ window.addEventListener("scroll", function() { // function to make title disappe
     h1.style.opacity = "1";
   }
 });
+
 
 function addStars(section, count) { // adds little stars
   for (let i = 0; i < count; i++) {
@@ -30,8 +32,8 @@ function addStars(section, count) { // adds little stars
 }
 
 addStars(document.querySelector("#imageSection"), 250);
-addStars(document.querySelector("#telescopesection"), 250);
 addStars(document.querySelector("footer"), 50);
+
 
 const earth = document.querySelector("#imageSection img");
 const earthInfo = document.querySelector("#earthInfo");
@@ -48,6 +50,7 @@ earth.addEventListener("mouseleave", function() {
   }, 1000); // stays visible for 1 seconds after cursor leaves
 });
 
+
 const img = document.querySelector("img");
 
 window.addEventListener("scroll", function() { // function for image
@@ -57,26 +60,69 @@ window.addEventListener("scroll", function() { // function for image
   img.style.width = newSize + "px";
 });
 
+
 const asteroidBelt = document.querySelector("#asteroidbelt");
 const colors = ["#382c1b", "#271c0e", "#251502"];
 
-for (let i = 0; i < 280; i++) { // adds asteriod belt
+for (let i = 0; i < 350; i++) { // adds main asteriod belt
     const asteroid = document.createElement("div");
     asteroid.classList.add("asteroid");
     asteroid.style.left = Math.random() * 200 + "%";
     asteroid.style.top = Math.random() * 100 + "%";
     
-    let size = Math.random() * 13 + 5;
-    if (Math.random() < 0.02) {
-        size = 30;
+    let size = Math.random() * 17 + 8;
+    if (Math.random() < 0.01) {
+        size = 40;
     }
     asteroid.style.width = size + "px";
     asteroid.style.height = size + "px";
     
     asteroid.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    asteroid.style.setProperty("--duration", Math.random() * 20 + 10 + "s");
+    asteroid.style.setProperty("--duration", Math.random() * 23 + 8 + "s");
     asteroidBelt.appendChild(asteroid);
 }
+
+const kuiperBelt = document.querySelector("#kuiperbelt");
+const kuipercolors = ["#363635", "#47485c", "#23232b"];
+
+for (let i = 0; i < 370; i++) { // adds kuiper asteriod belt
+    const asteroid = document.createElement("div");
+    asteroid.classList.add("kuiperasteroid");
+    asteroid.style.left = Math.random() * 200 + "%";
+    asteroid.style.top = Math.random() * 135 + "%";
+    
+    let size = Math.random() * 25 + 12;
+    if (Math.random() < 0.01) {
+        size = 60;
+    }
+    asteroid.style.width = size + "px";
+    asteroid.style.height = size + "px";
+    
+    asteroid.style.backgroundColor = kuipercolors[Math.floor(Math.random() * kuipercolors.length)];
+    asteroid.style.setProperty("--duration", Math.random() * 23 + 8 + "s");
+    kuiperBelt.appendChild(asteroid);
+}
+
+const planet9container = document.querySelector("#planet9container");
+
+for (let i = 0; i < 35; i++) {  // adds stars to planet 9 img
+  const star = document.createElement("div");
+  star.classList.add("p9star");
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  planet9container.appendChild(star);
+}
+
+const sun = document.createElement("div");
+sun.classList.add("p9star");
+sun.style.left = "10%";
+sun.style.top = "15%";
+sun.style.width = "4px";
+sun.style.height = "4px";
+sun.style.boxShadow = "0 0 6px rgba(255, 220, 100, 0.9)";
+sun.style.backgroundColor = "#ffdc64";
+planet9container.appendChild(sun);
+
 
 window.addEventListener("scroll", function() { // function to make footer appear
     const footer = document.querySelector("footer");
@@ -89,11 +135,13 @@ window.addEventListener("scroll", function() { // function to make footer appear
     }
 });
 
+
 document.querySelectorAll("#dropdown a").forEach(function(link) { // function for menu links 
   link.addEventListener("click", function() {
     dropdown.style.display = "none";
   });
 });
+
 
 const observer = new IntersectionObserver(function(entries) { // function for fade in <p>
   entries.forEach(function(entry) {
@@ -104,6 +152,7 @@ const observer = new IntersectionObserver(function(entries) { // function for fa
     }
   });
 });
+
 
 document.querySelectorAll("#solarsystemdiv p").forEach(function(p) {
   p.style.opacity = "0";
